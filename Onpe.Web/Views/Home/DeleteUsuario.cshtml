@@ -1,0 +1,41 @@
+﻿@model Onpe.Web.ViewModel.DeleteUsuarioViewModel
+
+@{
+    ViewBag.Title = "Eliminar Usuario";
+}
+
+<div class="alert">
+    <p>
+        <h3>Estas seguro que deseas eliminar el Usuario?</h3>
+    </p>
+</div>
+<hr />
+<div class="row" align="center">
+    <div class="col-md-4">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.UsuarioId)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.UsuarioId)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions">
+        <button type="submit" value="Delete" class="btn btn-primary">
+            <i class="fa fa-trash"></i>&nbsp;Eliminar
+        </button>
+        @Html.ActionLink("Back to List", "LstUsuarios")
+    </div>
+}
+</div>

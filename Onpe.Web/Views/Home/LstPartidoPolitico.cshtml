@@ -1,0 +1,302 @@
+﻿@model Onpe.Web.ViewModel.LstPartidoPoliticoViewModel
+
+@{
+    ViewBag.Title = "Lista de Partidos Politicos";
+
+    String strRol = String.Empty;
+    if (Session["objUsuario"] != null)
+    {
+
+
+        strRol = ((Onpe.Web.Models.Usuario)Session["objUsuario"]).Roles.Acronimo;
+    }
+}
+
+@if (strRol == "ADM")
+{
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstPartidoPolitico")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-striped">
+
+                <thead>
+
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        @foreach (var item in Model.LstPartidoPolitico)
+                        {
+                        <tr>
+                            <td>@item.Nombre</td>
+
+                            <td>
+                                <a href="@Url.Action("AddEditPartidoPolitico",new { PartidoPoliticoId = item.PartidoPoliticoId })" class="btn btn-default">
+                                    <i class="fa fa-edit"></i>&nbsp;Editar
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("DeletepartidoPolitico", new { PartidoPoliticoId = item.PartidoPoliticoId, Nombre=item.Nombre})" class="btn btn-default">
+                                    <i class="fa fa-trash-o"></i>&nbsp;Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <a class="btn btn-primary" href="@Url.Action("AddEditPartidoPolitico")">
+            <i class="fa fa-plus"></i>&nbsp;Agregar
+        </a>
+}
+else if (strRol == "DIC")
+{
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstPartidoPolitico")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-striped">
+
+                <thead>
+
+                    <tr>
+                        <th>Nombre</th>
+                       
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        @foreach (var item in Model.LstPartidoPolitico)
+                        {
+                        <tr>
+                            <td>@item.Nombre</td>
+
+                          
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+}
+else if (strRol == "OPE")
+{
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstPartidoPolitico")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-striped">
+
+                <thead>
+
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        @foreach (var item in Model.LstPartidoPolitico)
+                        {
+                        <tr>
+                            <td>@item.Nombre</td>
+
+                           
+                            <td>
+                                <a href="@Url.Action("DeletepartidoPolitico", new { PartidoPoliticoId = item.PartidoPoliticoId, Nombre=item.Nombre})" class="btn btn-default">
+                                    <i class="fa fa-trash-o"></i>&nbsp;Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+}
+else if (strRol == "USU")
+{
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstPartidoPolitico")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-striped">
+
+                <thead>
+
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        @foreach (var item in Model.LstPartidoPolitico)
+                        {
+                        <tr>
+                            <td>@item.Nombre</td>
+
+                            <td>
+                                <a href="@Url.Action("AddEditPartidoPolitico",new { PartidoPoliticoId = item.PartidoPoliticoId })" class="btn btn-default">
+                                    <i class="fa fa-edit"></i>&nbsp;Editar
+                                </a>
+                            </td>
+                            
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+}
+else if (strRol == "EMP")
+{
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstPartidoPolitico")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-striped">
+
+                <thead>
+
+                    <tr>
+                        <th>Nombre</th>
+                       
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        @foreach (var item in Model.LstPartidoPolitico)
+                        {
+                        <tr>
+                            <td>@item.Nombre</td>
+
+                       
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <a class="btn btn-primary" href="@Url.Action("AddEditPartidoPolitico")">
+            <i class="fa fa-plus"></i>&nbsp;Agregar
+        </a>
+}

@@ -1,0 +1,66 @@
+﻿@model Onpe.Web.ViewModel.LstRolesViewModel
+@{
+    ViewBag.Title = "Lista de Roles";
+}
+<div class="row">
+    <form class="form" method="post" action="@Url.Action("LstRoles")">
+        <div class="form-group">
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>Filtro</th>
+                    <td>
+                        @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                        @*<input class="form-control" id="nombre" type="text" />*@
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary ">
+                            <i class="fa fa-search"></i>&nbsp;Buscar
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Acronimo</th>
+                    <th>Descripcion</th>
+                   
+                    <th colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    @foreach (var item in Model.LstRoles)
+                    {
+                    <tr>
+                        <td>@item.Acronimo</td>
+                        <td>@item.Descripcion</td>
+                        
+                        <td>
+                            <a href="@Url.Action("AddEditRoles",new { RolId = item.RolId})" class="btn btn-default">
+                                <i class="fa fa-edit"></i>&nbsp;Editar
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("DeleteRoles",new { RolId = item.RolId})" class="btn btn-default">
+                                <i class="fa fa-trash-o"></i>&nbsp;Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a class="btn btn-primary" href="@Url.Action("AddEditRoles")">
+        <i class="fa fa-plus"></i>&nbsp;Agregar
+    </a>
+
+

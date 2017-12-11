@@ -1,0 +1,52 @@
+﻿@model Onpe.Web.ViewModel.AddEditUsuariosViewModel
+
+@{
+    ViewBag.Title = Model.UsuarioId.HasValue ? "Editar Usuario" : "Agregar Usuario";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" action="@Url.Action("AddEditUsuarios")">
+            @Html.HiddenFor(X => X.UsuarioId)
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <p>
+                            <label>Nombre</label>
+                            @Html.TextBoxFor(X => X.Nombres, new { @class = "form-control" })
+                            @*@<input class="form-control" id="nombre" type="text"/>*@
+                        </p>
+                        <p>
+                            <label>Apellidos</label>
+                            @Html.TextBoxFor(X => X.Apellidos, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </p>
+                        <p>
+                            <label>Rol</label>
+                            @Html.DropDownListFor(X => X.RolId, new SelectList(Model.LstRoles, "RolId", "Descripcion"), "--------Selecione un Rol------", new { @class = "form-control" })
+                            @*@<input class="form-control" id="nombre" type="text" />*@
+                        </p>
+                        <p>
+                            <label>Codigo</label>
+                            @Html.TextBoxFor(X => X.Codigo, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </p>
+                        <p>
+                            <label>Password</label>
+                            @Html.TextBoxFor(X => X.Password, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary ">
+                <i class="fa fa-save"></i>&nbsp;Guardar
+            </button>
+            <a class="btn btn-default" href="@Url.Action("LstUsuarios")">
+                <i class="fa fa-arrow-back"></i>&nbsp;Cancelar
+            </a>
+        </form>
+    </div>
+</div>
+

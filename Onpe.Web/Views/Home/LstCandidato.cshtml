@@ -1,0 +1,356 @@
+﻿
+@model Onpe.Web.ViewModel.LstCandidatoViewModel
+@{
+    ViewBag.Title = "Listar Candidatos";
+
+    String strRol = String.Empty;
+    if (Session["objUsuario"] != null)
+    {
+
+        
+        strRol = ((Onpe.Web.Models.Usuario)Session["objUsuario"]).Roles.Acronimo;
+    }
+}
+
+@if(strRol=="ADM")
+{ 
+        <div class="row">
+            <form class="form" method="post" action="@Url.Action("LstCandidato")">
+                <div class="form-group">
+                    <table class="table table-hover table-striped">
+                        <tr>
+                            <th>Filtro</th>
+                            <td>
+                                @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                                @*<input class="form-control" id="nombre" type="text" />*@
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary ">
+                                    <i class="fa fa-search"></i>&nbsp;Buscar
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-striped">
+
+
+                    <thead>
+
+                        <tr aling="Center">
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Distrito</th>
+                            <th>Partido Politico</th>
+                            <th colspan="2">Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr aling="Center">
+                            @foreach (var item in Model.LstCandidato)
+                            {
+                            <tr>
+                                <td>@item.Nombre</td>
+                                <td>@item.Apellidos</td>
+                                <td>@item.Distrito.Nombre</td>
+                                <td>@item.PartidoPolitico.Nombre</td>
+                                <td>
+                                    <a href="@Url.Action("AddEditCandidato",new { CandidatoId = item.CandidatoId})" class="btn btn-default">
+                                        <i class="fa fa-edit"></i>&nbsp;Editar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("DeleteCandidato", new {CandidatoId = item.CandidatoId})" class="btn btn-default">
+                                        <i class="fa fa-trash-o"></i>&nbsp;Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <a class="btn btn-primary" href="@Url.Action("AddEditCandidato")">
+                <i class="fa fa-plus"></i>&nbsp;Agregar
+            </a>
+
+}
+else if (strRol == "OPE")
+{
+
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstCandidato")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-striped">
+
+
+                    <thead>
+
+                        <tr aling="Center">
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Distrito</th>
+                            <th>Partido Politico</th>
+                            <th colspan="2">Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr aling="Center">
+                            @foreach (var item in Model.LstCandidato)
+                            {
+                            <tr>
+                                <td>@item.Nombre</td>
+                                <td>@item.Apellidos</td>
+                                <td>@item.Distrito.Nombre</td>
+                                <td>@item.PartidoPolitico.Nombre</td>
+                               
+                                <td>
+                                    <a href="@Url.Action("DeleteCandidato", new {CandidatoId = item.CandidatoId})" class="btn btn-default">
+                                        <i class="fa fa-trash-o"></i>&nbsp;Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+}
+else if (strRol == "USU")
+{
+
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstCandidato")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-striped">
+
+
+                    <thead>
+
+                        <tr aling="Center">
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Distrito</th>
+                            <th>Partido Politico</th>
+                            <th colspan="2">Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr aling="Center">
+                            @foreach (var item in Model.LstCandidato)
+                            {
+                            <tr>
+                                <td>@item.Nombre</td>
+                                <td>@item.Apellidos</td>
+                                <td>@item.Distrito.Nombre</td>
+                                <td>@item.PartidoPolitico.Nombre</td>
+                                <td>
+                                    <a href="@Url.Action("AddEditCandidato",new { CandidatoId = item.CandidatoId})" class="btn btn-default">
+                                        <i class="fa fa-edit"></i>&nbsp;Editar
+                                    </a>
+                                </td>
+                               
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+          
+
+}
+else if (strRol == "DIC")
+{
+
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstCandidato")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-striped">
+
+
+                    <thead>
+
+                        <tr aling="Center">
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Distrito</th>
+                            <th>Partido Politico</th>
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr aling="Center">
+                            @foreach (var item in Model.LstCandidato)
+                            {
+                            <tr>
+                                <td>@item.Nombre</td>
+                                <td>@item.Apellidos</td>
+                                <td>@item.Distrito.Nombre</td>
+                                <td>@item.PartidoPolitico.Nombre</td>
+                               
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+}
+else if (strRol == "EMP")
+{
+    <div class="row">
+        <form class="form" method="post" action="@Url.Action("LstCandidato")">
+            <div class="form-group">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Filtro</th>
+                        <td>
+                            @Html.TextBoxFor(X => X.Filtro, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-striped">
+
+
+                    <thead>
+
+                        <tr aling="Center">
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Distrito</th>
+                            <th>Partido Politico</th>
+                           
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr aling="Center">
+                            @foreach (var item in Model.LstCandidato)
+                            {
+                            <tr>
+                                <td>@item.Nombre</td>
+                                <td>@item.Apellidos</td>
+                                <td>@item.Distrito.Nombre</td>
+                                <td>@item.PartidoPolitico.Nombre</td>
+                                
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <a class="btn btn-primary" href="@Url.Action("AddEditCandidato")">
+                <i class="fa fa-plus"></i>&nbsp;Agregar
+            </a>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

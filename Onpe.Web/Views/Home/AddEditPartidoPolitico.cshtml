@@ -1,0 +1,30 @@
+﻿@model Onpe.Web.ViewModel.AddEditPartidoPoliticoViewModel
+@{
+    ViewBag.Title = Model.PartidoPoliticoId.HasValue ? "Editar Partido Politico" : "Agregar Partido Politico";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" action="@Url.Action("AddEditPartidoPolitico")">
+            @Html.HiddenFor(X => X.PartidoPoliticoId)
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <label>Nombre</label>
+                        @Html.TextBoxFor(X => X.Nombre, new { @class = "form-control" })
+                        @*<input class="form-control" id="nombre" type="text" />*@
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary ">
+                <i class="fa fa-save"></i>&nbsp;Guardar
+            </button>
+            <a class="btn btn-default " href="@Url.Action("LstPartidoPolitico")">
+                <i class="fa fa-arrow-back"></i>&nbsp;Cancelar
+            </a>
+        </form>
+    </div>
+</div>
+
+

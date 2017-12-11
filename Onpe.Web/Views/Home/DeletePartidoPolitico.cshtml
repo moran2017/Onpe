@@ -1,0 +1,46 @@
+﻿@model Onpe.Web.ViewModel.DeletePartidoPoliticoViewModel
+
+@{
+    ViewBag.Title = "Eliminar Partido Politico";
+}
+<div class="alert">
+    <p>
+        <h3>Estas seguro que deseas eliminar el Partido Politico?</h3>
+    </p>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.PartidoPoliticoId)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.PartidoPoliticoId)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+@using (Html.BeginForm())
+            {
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions">
+        <p>
+            <button type="submit" value="Delete" class="btn btn-primary">
+                <i class="fa fa-trash"></i>&nbsp;Eliminar
+            </button>
+           
+            @Html.ActionLink("Back to List", "LstPartidoPolitico")
+        </p>
+  
+         
+    
+       
+    </div>
+}
+

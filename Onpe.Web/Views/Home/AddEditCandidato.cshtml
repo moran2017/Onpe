@@ -1,0 +1,47 @@
+﻿@model Onpe.Web.ViewModel.AddEditCandidatoViewModel
+ 
+@{
+    ViewBag.Title = Model.CandidatoId.HasValue ? "Editar Candidato" : "Agregar Candidato";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" action="@Url.Action("AddEditCandidato")">
+            @Html.HiddenFor(X => X.CandidatoId)
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <p>
+                            <label>Nombre</label>
+                            @Html.TextBoxFor(X => X.Nombre, new { @class = "form-control" })
+                           @*@<input class="form-control" id="nombre" type="text"/>*@
+                        </p>
+                        <p>
+                            <label>Apellidos</label>
+                            @Html.TextBoxFor(X => X.Apellidos, new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </p>
+                        <p>
+                            <label>Distrito</label>
+                            @Html.DropDownListFor(X => X.DistritoId, new SelectList(Model.LstDistrito, "DistritoId", "Nombre"), "--------Selecione un Distrito------", new { @class = "form-control" })
+                            @*@<input class="form-control" id="nombre" type="text" />*@
+                        </p>
+                        <p>
+                            <label>Partido Politico</label>
+                            @Html.DropDownListFor(X => X.PartidoPoliticoId,new SelectList(Model.LstPartidoPolitico, "PartidoPoliticoId", "Nombre"), "--------Selecione un Partido Politico------",new { @class = "form-control" })
+                            @*<input class="form-control" id="nombre" type="text" />*@
+                        </p>
+                </div>
+                </div>
+                </div>
+            <button type="submit" class="btn btn-primary ">
+                <i class="fa fa-save"></i>&nbsp;Guardar
+            </button>
+            <a class="btn btn-default" href="@Url.Action("LstCandidato")">
+                <i class="fa fa-arrow-back"></i>&nbsp;Cancelar
+            </a>
+        </form>
+    </div>
+</div>
+
+
